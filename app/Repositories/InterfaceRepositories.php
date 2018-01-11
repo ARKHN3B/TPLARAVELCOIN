@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace Laracoin\Repositories;
 
 Interface InterfaceRepositories {
     function getUserProfileByID($id);

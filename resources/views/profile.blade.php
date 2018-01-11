@@ -8,10 +8,9 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 
-                {{ $userdatas }}
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Sheena Shrestha</h3>
+                        <h3 class="panel-title">{{ $userdatas->firstname }} {{ $userdatas->lastname }}</h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -20,34 +19,35 @@
                                 <table class="table table-user-information">
                                     <tbody>
                                     <tr>
-                                        <td>Department:</td>
-                                        <td>Programming</td>
-                                    </tr>
-                                    <tr>
                                         <td>Hire date:</td>
                                         <td>06/23/2013</td>
                                     </tr>
                                     <tr>
                                         <td>Date of Birth</td>
-                                        <td>01/24/1900</td>
+                                        <td>{{ $userdatas->birth }}</td>
                                     </tr>
 
                                     <tr>
                                     <tr>
                                         <td>Gender</td>
-                                        <td>Female</td>
+                                        <td>
+                                            @if($userdatas->gender == 1)
+                                                Male
+                                            @else
+                                                Female
+                                            @endif
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Home Address</td>
-                                        <td>Kathmandu,Nepal</td>
+                                        <td>Address</td>
+                                        <td>{{ $userdatas->address }}</td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
-                                        <td><a href="mailto:info@support.com">info@support.com</a></td>
+                                        <td><a href="mailto:info@support.com">{{ $userEmail }}</a></td>
                                     </tr>
                                     <td>Phone Number</td>
-                                    <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
-                                    </td>
+                                    <td>{{ $userdatas->phone }}</td>
 
                                     </tr>
                                     </tbody>

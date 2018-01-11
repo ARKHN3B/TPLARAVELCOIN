@@ -2,10 +2,11 @@
 
 namespace Laracoin\Http\Controllers;
 
-use App\Repositories\UserProfileRepository;
 use Illuminate\{
     Http\Request, Support\Facades\Auth
 };
+use Laracoin\Repositories\UserProfileRepository;
+use Laracoin\Users_profiles;
 use function view;
 use function array_flip;
 
@@ -20,11 +21,14 @@ class ProfileController extends Controller
 
     public function getProfile()
     {
-        $userID = Auth::user();
-        $userID = $userID->id;
-//        $userdatas = $this->_userprofileRepo->getUserProfileByID();
+        $user = Auth::user();
+        $userEmail = $user->email;
+        $userID = $user->id;
+        $userdatas = $this->_userprofileRepo->getUserProfileByID($userID);
+        $userdatas = $userdatas[0];
 
-        return view('profile')->with('userdatas', $userID);
+        return view('profile')->with('userdatas', $userdatas)
+                                    ->with('userEmail', $userEmail);
     }
 
     public function getChangeProfile()

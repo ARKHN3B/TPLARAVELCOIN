@@ -5,7 +5,7 @@ namespace Laracoin\Providers;
 use Illuminate\{
     Support\Facades\Schema, Support\ServiceProvider
 };
-use App\{
+use Laracoin\{
     Repositories\InterfaceRepositories, Repositories\UserProfileRepository
 };
 

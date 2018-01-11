@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace Laracoin\Repositories;
 
 
 class BaseRepositories implements InterfaceRepositories
@@ -10,6 +10,6 @@ class BaseRepositories implements InterfaceRepositories
 
     function getUserProfileByID($id)
     {
-        $this->_entity->find($id);
+        return $this->_entity->all()->where('users_id', $id);
     }
 }
