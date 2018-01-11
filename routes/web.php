@@ -12,10 +12,12 @@
 */
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', array(
+    'as' => 'welcome',
+    'uses' => 'Controller@getWelcome'
+));
 
 Auth::routes();
 
@@ -25,3 +27,17 @@ Route::get('/profile', array(
     'as' => 'profile',
     'uses' => 'ProfileController@getProfile'
 ));
+
+Route::get('/change-profile', array(
+    'as' => 'changeprofile',
+    'uses' => 'ProfileController@getChangeProfile'
+));
+
+Route::post('/change-profile', array(
+    'as' => 'changeprofile',
+    'uses' => 'ProfileController@postChangeProfile'
+));
+
+Route::get('/test', function (){
+    dump(Session::all());
+});

@@ -4,14 +4,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-                <A href="{{ route('changeprofile') }}" >Edit Profile</A>
+                <A href="edit.html" >Edit Profile</A>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 
-                {{ $userdatas }}
+                {{ Form::open(['url' => '']) }}
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Sheena Shrestha</h3>
+                        <h3 class="panel-title">{{ Form::text('firstname', ['placeholder' => ]) }}</h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">

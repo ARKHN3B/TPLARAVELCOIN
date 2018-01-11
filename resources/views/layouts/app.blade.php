@@ -76,5 +76,22 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        var $countdown = document.getElementById('countdown')
+        var starter = 5
+
+        $countdown.innerHTML = starter
+
+        var interval = setInterval(function(){
+
+            if (starter == 0){
+                clearInterval(interval)
+                return
+            }
+            starter -= 1
+            $countdown.innerHTML = starter
+            console.log(starter)
+        }, 1000)
+    </script>
 </body>
 </html>

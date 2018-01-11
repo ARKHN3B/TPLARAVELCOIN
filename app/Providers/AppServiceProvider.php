@@ -2,8 +2,12 @@
 
 namespace Laracoin\Providers;
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\{
+    Support\Facades\Schema, Support\ServiceProvider
+};
+use App\{
+    Repositories\InterfaceRepositories, Repositories\UserProfileRepository
+};
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(InterfaceRepositories::class, UserProfileRepository::class);
     }
 }
