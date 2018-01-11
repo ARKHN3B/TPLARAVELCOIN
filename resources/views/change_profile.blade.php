@@ -4,57 +4,72 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-                <A href="edit.html" >Edit Profile</A>
+                <A href="{{ route('profile') }}" >⇚ Back to the profile</A>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-
-                {{ Form::open(['url' => '']) }}
                 <div class="panel panel-info">
+                    {{ Form::open(array('url' => 'change-profile')) }}
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{ Form::text('firstname', ['placeholder' => ]) }}</h3>
+                        <h3 class="panel-title">
+                            {{ Form::text('firstname', $userdatas->firstname) }}
+                            {{ Form::text('lastname', $userdatas->lastname) }}
+                        </h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
+                            <div class="col-md-3 col-lg-3 " align="center">
+                                <img alt="User Pic" class="img-circle img-responsive"
+                                     @if($userdatas->imagepath == '')
+                                     src="/images/user-default.png"
+                                     @else
+                                     src="{{ $userdatas->imagepath }}"
+                                        @endif
+                                >
+                            </div>
                             <div class=" col-md-9 col-lg-9 ">
                                 <table class="table table-user-information">
                                     <tbody>
                                     <tr>
-                                        <td>Department:</td>
-                                        <td>Programming</td>
-                                    </tr>
-                                    <tr>
                                         <td>Hire date:</td>
-                                        <td>06/23/2013</td>
+                                        <td>{{ $userdatas->created_at }}</td>
                                     </tr>
                                     <tr>
                                         <td>Date of Birth</td>
-                                        <td>01/24/1900</td>
+                                        <td>{{ Form::date('birth', $userdatas->birth) }}</td>
                                     </tr>
 
                                     <tr>
                                     <tr>
                                         <td>Gender</td>
-                                        <td>Female</td>
+                                        <td>
+                                            {{ Form::select('gender', array(
+                                                    0 => 'Female',
+                                                    1 => 'Male'
+                                               ))
+                                            }}
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Home Address</td>
-                                        <td>Kathmandu,Nepal</td>
+                                        <td>Address</td>
+                                        <td>{{ Form::text('address', $userdatas->address) }}</td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
-                                        <td><a href="mailto:info@support.com">info@support.com</a></td>
+                                        <td><a href="mailto:info@support.com">{{ Form::email('email', $userEmail) }}</a></td>
                                     </tr>
                                     <td>Phone Number</td>
-                                    <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
-                                    </td>
+                                    <td>{{ Form::text('phone', $userdatas->phone)  }}</td>
 
                                     </tr>
                                     </tbody>
                                 </table>
+                                <div style="float: inline-end;">
+                                    {{ Form::submit() }}
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>

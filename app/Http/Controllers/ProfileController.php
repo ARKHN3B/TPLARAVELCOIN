@@ -33,9 +33,13 @@ class ProfileController extends Controller
 
     public function getChangeProfile()
     {
-        return view('change_profile')->with('datas_profile', array(
-
-        ));
+        $user = Auth::user();
+        $userEmail = $user->email;
+        $userID = $user->id;
+        $userdatas = $this->_userprofileRepo->getUserProfileByID($userID);
+        $userdatas = $userdatas[0];
+        return view('change_profile')->with('userdatas', $userdatas)
+                                           ->with('userEmail', $userEmail);
     }
 
     public function postChangeProfile()
