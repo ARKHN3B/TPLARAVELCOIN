@@ -21,23 +21,30 @@ Route::get('/', array(
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
 
-Route::get('/profile', array(
+/*
+ * PROFILE Routing
+ */
+Route::get('profile', array(
     'as' => 'profile',
     'uses' => 'ProfileController@getProfile'
 ));
 
-Route::get('/change-profile', array(
+Route::get('change-profile', array(
     'as' => 'changeprofile',
     'uses' => 'ProfileController@getChangeProfile'
 ));
 
-Route::post('/change-profile', array(
+Route::post('change-profile', array(
     'as' => 'changeprofile',
     'uses' => 'ProfileController@postChangeProfile'
 ));
 
-Route::get('/test', function (){
-    dump(Session::all());
-});
+/*
+ * WALLETS Routing
+ */
+Route::get('wallets', array(
+    'as' => 'wallets',
+    'uses' => 'WalletsController@getWallets'
+));

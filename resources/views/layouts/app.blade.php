@@ -14,6 +14,23 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    <style>
+        .thcoin, .tdcoin {
+            text-align: center;
+        }
+
+        .emcoin {
+            height: 4em;
+        }
+
+        .emtdcoin {
+            border: 1px solid #c5c9cb;
+        }
+
+        .emtdcoin:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">

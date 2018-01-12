@@ -72,7 +72,7 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ route('profile') }}">Profile</a>
-                        <a href="">Wallets</a>
+                        <a href="{{ route('wallets') }}">Wallets</a>
                         <a href="">Market</a>
                         <a href="{{ route('logout') }}"
                            onclick="event.preventDefault();

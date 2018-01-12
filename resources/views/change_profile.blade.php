@@ -1,6 +1,17 @@
 @extends('layouts/app')
 
 @section('content')
+    @if(count($errors)>0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $e)
+                    <li>
+                        {{ $e }}
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="container">
         <div class="row">
             <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
@@ -45,7 +56,7 @@
                                             {{ Form::select('gender', array(
                                                     0 => 'Female',
                                                     1 => 'Male'
-                                               ))
+                                               ), $userdatas->gender)
                                             }}
                                         </td>
                                     </tr>
@@ -55,7 +66,7 @@
                                     </tr>
                                     <tr>
                                         <td>Email</td>
-                                        <td><a href="mailto:info@support.com">{{ Form::email('email', $userEmail) }}</a></td>
+                                        <td><a href="mailto:info@support.com">{{ $userEmail }}</a></td>
                                     </tr>
                                     <td>Phone Number</td>
                                     <td>{{ Form::text('phone', $userdatas->phone)  }}</td>
@@ -63,8 +74,11 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                                <div style="float: inline-end;">
-                                    {{ Form::submit() }}
+                                <div style="float: right;">
+                                    {{ Form::button('submit',array(
+       'type'=>'submit',
+       'class'=>'btn btn-primary'
+   )) }}
                                 </div>
                             </div>
                         </div>
