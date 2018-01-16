@@ -1,0 +1,34 @@
+/************** COMMENTAIRES ALFONSO ***************/
+
+Ben bravo pour l'esthétique du site. C'est le premier site qui esthétiquement ressemble à quelque chose lol.
+
+Par contre tu n'as pas fait de seed!! tain je dois tapper tous les inputs user pour voir si ça marche! En plus
+je vois bien que tu as installé faker, encore fallait-il l'utiliser!
+
+Aussi par exemple moi j'ai une erreur dans
+
+public function getProfile()
+ {
+     $datas = $this->userInfos();
+     $userdatas = $this->_userprofileRepo->getUserProfileByID($datas['user_id']);
+     $userdatas = $userdatas[0];
+
+     return view('profile')->with('userdatas', $userdatas)
+                                 ->with('userEmail', $datas['user_email']);
+ }
+
+
+  qui me dit que l'index 0 $userdatas   n'existe pas.
+
+    parce que moi en fait je n'ai pas d'item qui vient avec mon profil car je viens de le créer. Donc il faut que tu vérifies
+    si ce que tu donnes correspond bien à quelque chose. avec un if(!empty());
+
+    Aussi ton interface aurait du comporter toute les fonctions qu'on a vu ensemble de mon exemple afind de les implémenter dans l'objet base.
+
+    Bon tu as compris ce qu'il faut mettre dans le repo. Mais je pense qu'en général toi et ton mac vous auriez pu mieux performer. Pour que tu concrétises la création des wallets qui avait une bonne gueule esthétiquement.
+
+    Continue à taffer ça viendra avec le temps.
+
+    Comme pour les autres investit dans les crypto. On fera un apéro chez Antho pour qu'il nous montre le genre de fête qu'il peut organiser.
+
+    A bientôt j'espère!
